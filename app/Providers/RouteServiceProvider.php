@@ -91,6 +91,18 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/digging-deeper/queues.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/database/query_builder.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/eloquent/eloquent.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/eloquent/relationships.php'));
         });
     }
 
