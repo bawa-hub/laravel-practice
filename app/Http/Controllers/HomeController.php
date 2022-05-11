@@ -29,6 +29,7 @@ class HomeController extends Controller
         $user = User::create([
             'name' => Str::random(8),
             "email" => Str::random(8) . "@gmail.com",
+            "password" => "12345678",
             'active' => 1
         ]);
         if ($user) {
