@@ -14,7 +14,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        return "<div><h1>Welcome to Laravel world!<h1></div>";
     }
 
     public function insertUser()
