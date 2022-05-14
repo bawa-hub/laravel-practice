@@ -14,34 +14,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return "<div><h1>Welcome to Laravel world!<h1></div>";
-    }
-
-    public function insertUser()
-    {
-        // for ($i = 0; $i < 100; $i++) {
-        //     DB::table('users')->insert([
-        //         'name' => Str::random(8),
-        //         'email' => Str::random(8) . "@gmail.com"
-        //     ]);
-        // }
-        // echo "100 user inserted.";
-        $user = User::create([
-            'name' => Str::random(8),
-            "email" => Str::random(8) . "@gmail.com",
-            "password" => "12345678",
-            'active' => 1
-        ]);
-        if ($user) {
-            $profile = new Profile();
-            $profile->user_id = $user->id;
-            $profile->phone = "1111111111";
-            $profile->address = "Patalpur";
-            $profile->profession = "Web Developer";
-            if ($profile->save()) {
-                echo "User is created";
-            }
-        }
+        return view('index');
     }
 
     public function getUsers()
@@ -96,19 +69,7 @@ class HomeController extends Controller
     public function userProfiles()
     {
         $users = User::all();
-        foreach ($users as $user) {
-            echo "name: $user->name, address: $user->profile";
-            echo "<br>";
-        }
-    }
-
-    public function profiles()
-    {
-        $profiles = Profile::all();
-        foreach ($profiles as $profile) {
-            echo "name: " . $profile->user->name . " profession: " . $profile->profession;
-            echo "<br>";
-        }
+        return view('eloquent.relationships.onetoone', ['users' => $users]);
     }
 
     public function createPost()

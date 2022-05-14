@@ -5,14 +5,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('relationships')->group(function () {
     Route::get('/', function () {
-        return "relationships";
-    });
+        return view('eloquent.relationships.index');
+    })->name('relationships');
 
     /******************* Defining Relationships ****************/
 
     // one to one
-    Route::get('/users', [HomeController::class, 'userProfiles']);
-    Route::get('/profiles', [HomeController::class, 'profiles']);
+    Route::get('/users', [HomeController::class, 'userProfiles'])->name('onetoone');
+    Route::post('/users', 'UserController@insertUser')->name('users.store');
 
     // one to many
     Route::get('/create-post', [HomeController::class, 'createPost']);
